@@ -1,9 +1,16 @@
 let chosenSize = 16;
 let chosenColor = "#393E46";
-
+let lastChosenColor = "#393E46";
+let rainbowMode = false;
 const container = document.getElementById("container");
+const boxColor = document.getElementById("colorPicker");
+const rainbowButton = document.getElementById("rainbowButton");
+const gridSize = document.getElementById("gridSize");
 const gridSizeLabel = document.getElementById("gridSizeLabel");
+const resetButton = document.getElementById("resetButton");
+const boxes = document.querySelectorAll(".box");
 createGrid(chosenSize);
+
 function createGrid(chosenSize) {
   container.textContent = "";
   for (let index = 0; index < chosenSize; index++) {
@@ -14,36 +21,55 @@ function createGrid(chosenSize) {
       const boxCreated = document.createElement("div");
       boxCreated.classList.toggle("box");
       column.appendChild(boxCreated);
-      boxCreated.addEventListener("mouseover", (event) => {
-        boxCreated.style.backgroundColor = chosenColor;
-      });
+      paintOnHover(boxCreated);
     }
   }
 }
 
-const gridSize = document.getElementById("gridSize");
 gridSize.addEventListener("input", (event) => {
   chosenSize = event.target.value;
   gridSizeLabel.textContent =
     `${event.target.value}` + "x" + `${event.target.value}`;
   createGrid(chosenSize);
 });
-
-const boxes = document.querySelectorAll(".box");
-const boxColor = document.getElementById("colorPicker");
-
 boxColor.addEventListener("input", (event) => {
   chosenColor = event.target.value;
+  lastChosenColor = chosenColor;
 });
-const resetButton = document.getElementById("resetButton");
-console.log(resetButton);
+
 resetButton.addEventListener("click", (event) => {
-  console.log("click");
   chosenSize = 16;
-  console.log(chosenSize);
   chosenColor = "#393E46";
   colorPicker.value = chosenColor;
   gridSize.value = chosenSize;
   gridSizeLabel.textContent = chosenSize + "x" + chosenSize;
   createGrid(chosenSize);
 });
+
+function paintOnHover(boxCreated) {
+  boxCreated.addEventListener("mouseover", (event) => {
+    if (rainbowMode === false) {
+      boxCreated.style.backgroundColor = chosenColor;
+    } else {
+      chosenColor = randomRgbColor();
+    } //
+    boxCreated.style.backgroundColor = chosenColor;
+  });
+}
+
+rainbowButton.addEventListener("click", (event) => {
+  rainbowMode = !rainbowMode;
+  if (rainbowMode === true) {
+    rainbowButton.classList.toggle("rainbowButtonActive");
+  } else {
+    rainbowButton.classList.toggle("rainbowButtonActive");
+    chosenColor = lastChosenColor;
+  }
+});
+
+function randomRgbColor() {
+  let r = Math.floor(Math.random() * 256); // Random between 0-255
+  let g = Math.floor(Math.random() * 256); // Random between 0-255
+  let b = Math.floor(Math.random() * 256); // Random between 0-255
+  return "rgb(" + r + "," + g + "," + b + ")";
+}
