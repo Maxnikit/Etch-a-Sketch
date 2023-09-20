@@ -22,12 +22,31 @@ body {
   flex-direction: column;
   flex: 1;
 }
-#userPanel {
+#userPanelContainer {
   border: black 1px solid;
   display: flex;
   flex-direction: column;
-  gap: 8px;
-  color: #eeeeee;
 }
-.changedColor {
+#userPanel {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  color: #eeeeee;
+  padding: 10px;
+  border: 1px solid red;
+}
+#colorPicker {
+}
+#colorPickerContainer {
+  margin-right: 10px;
+  display: flex;
+  align-items: center;
+  width: 200px;
+}
+#gridSizeLabel {
+}
+#title {
+  font-size: 20px;
+  text-align: center;
+  margin-bottom: 10px;
 }

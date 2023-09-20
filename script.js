@@ -35,3 +35,12 @@ const boxColor = document.getElementById("colorPicker");
 boxColor.addEventListener("input", (event) => {
   chosenColor = event.target.value;
 });
+const resetButton = document.getElementById("resetButton");
+console.log(resetButton);
+resetButton.addEventListener("click", (event) => {
+  console.log("click");
+  chosenSize = 16;
+  console.log(chosenSize);
+  chosenColor = "#393E46";
+  colorPicker.value = chosenColor;
+});
