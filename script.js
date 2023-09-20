@@ -1,4 +1,5 @@
 let chosenSize = 16;
+let chosenColor = "#393E46";
 
 const container = document.getElementById("container");
 const gridSizeLabel = document.getElementById("gridSizeLabel");
@@ -10,21 +11,27 @@ function createGrid(chosenSize) {
     column.classList.toggle("column");
     container.appendChild(column);
     for (let index = 0; index < chosenSize; index++) {
-      const box = document.createElement("div");
-      box.classList.toggle("box");
-      column.appendChild(box);
-      box.addEventListener("mouseover", changeColor);
+      const boxCreated = document.createElement("div");
+      boxCreated.classList.toggle("box");
+      column.appendChild(boxCreated);
+      boxCreated.addEventListener("mouseover", (event) => {
+        boxCreated.style.backgroundColor = chosenColor;
+      });
     }
   }
 }
-function changeColor(e) {
-  this.style.backgroundColor = "yellow";
-}
+
 const gridSize = document.getElementById("gridSize");
 gridSize.addEventListener("input", (event) => {
-  chosenSize = gridSize.value;
   chosenSize = event.target.value;
   gridSizeLabel.textContent =
     `${event.target.value}` + "x" + `${event.target.value}`;
   createGrid(chosenSize);
+});
+
+const boxes = document.querySelectorAll(".box");
+const boxColor = document.getElementById("colorPicker");
+
+boxColor.addEventListener("input", (event) => {
+  chosenColor = event.target.value;
 });

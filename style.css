@@ -1,5 +1,5 @@
 html {
-  background-color: #23374d;
+  background-color: #222831;
 }
 body {
   display: flex;
@@ -8,8 +8,8 @@ body {
   border: black 2px solid;
   display: flex;
   justify-content: center;
-  width: 960px;
-  height: 960px;
+  width: 900px;
+  height: 900px;
   margin: auto;
 }
 .box {
@@ -27,4 +27,7 @@ body {
   display: flex;
   flex-direction: column;
   gap: 8px;
+  color: #eeeeee;
+}
+.changedColor {
 }
