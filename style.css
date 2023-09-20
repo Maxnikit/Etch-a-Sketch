@@ -1,0 +1,30 @@
+html {
+  background-color: #23374d;
+}
+body {
+  display: flex;
+}
+#container {
+  border: black 2px solid;
+  display: flex;
+  justify-content: center;
+  width: 960px;
+  height: 960px;
+  margin: auto;
+}
+.box {
+  flex: 1;
+  border: solid 1px grey;
+  background-color: #e5e5e5;
+}
+.column {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+#userPanel {
+  border: black 1px solid;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
