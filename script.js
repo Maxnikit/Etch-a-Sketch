@@ -43,4 +43,7 @@ resetButton.addEventListener("click", (event) => {
   console.log(chosenSize);
   chosenColor = "#393E46";
   colorPicker.value = chosenColor;
+  gridSize.value = chosenSize;
+  gridSizeLabel.textContent = chosenSize + "x" + chosenSize;
+  createGrid(chosenSize);
 });
